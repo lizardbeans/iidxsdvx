@@ -18,11 +18,11 @@ iivxReport_t report;
 
 int tmp;
 uint8_t buttonCount = 9;
-uint8_t lightMode = 1;
+uint8_t lightMode = 0;
 // 0 = reactive lighting, 1 = HID lighting
 uint8_t ledPins[] = {2,3,4,5,6,7,8,9,10};
 uint8_t buttonPins[] = {11,12,13,18,19,20,21,22,23};
-uint8_t sysPin = 11;
+//uint8_t sysPin = 11;
 uint8_t reactiveLightPin = 21;
 uint8_t hidLightPin = 22;
 uint8_t sysInputPins[] = {13,18,19,20};
@@ -51,7 +51,7 @@ void doEncL(){
   }
 }
 
-void lights(uint8_t lightDesc){
+void lights(uint16_t lightDesc){
   for(int i=0;i<buttonCount;i++){
      if((lightDesc>>i)&1){
          digitalWrite(ledPins[i],HIGH);
@@ -68,7 +68,7 @@ void setup() {
     pinMode(buttonPins[i],INPUT_PULLUP);
     pinMode(ledPins[i],OUTPUT);
   }
-  pinMode(sysPin,INPUT_PULLUP);
+  //pinMode(sysPin,INPUT_PULLUP);
   //setup interrupts
   pinMode(ENC_L_A,INPUT_PULLUP);
   pinMode(ENC_L_B,INPUT_PULLUP);
@@ -93,23 +93,22 @@ void loop() {
     lights(iivx_led);
   }
   // Detect Syspin Entries
-  if(digitalRead(sysPin)!=HIGH){
-    report.buttons = 0;
-    for(int i=0;i<4;i++){
-      if(digitalRead(sysInputPins[i])!=HIGH){
-        report.buttons |= (uint16_t)1 << (i+buttonCount);
-      } else {
-        report.buttons &= ~((uint16_t)1 << (i+buttonCount));
-      }
-    }
-    if(digitalRead(reactiveLightPin)!=HIGH){
-      lightMode = 0;
-    } else if (digitalRead(hidLightPin)!=HIGH){
-      lightMode = 1;
-    }
-  }
+  //if(digitalRead(buttonPins[0])!=HIGH){
+  //  report.buttons = 0;
+  //  for(int i=0;i<4;i++){
+  //    if(digitalRead(sysInputPins[i])!=HIGH){
+  //      report.buttons |= (uint16_t)1 << (i+buttonCount);
+  //    } else {
+   //     report.buttons &= ~((uint16_t)1 << (i+buttonCount));
+ //     }
+  //  }
+ //   if(digitalRead(reactiveLightPin)!=HIGH){
+  //    lightMode = 0;
+ //   } else if (digitalRead(hidLightPin)!=HIGH){
+ //     lightMode = 1;
+ //   }
+ // }
   // Send report and delay
   iivx.setState(&report);
   delayMicroseconds(REPORT_DELAY);
 }
-
