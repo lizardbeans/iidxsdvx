@@ -4,12 +4,12 @@ Last update: January 22nd 2017
 I'll update in february-march when the rest of the stuff arrives.
  
 <div style='float: center'>
-  <img style='width: 200px' src='http://iidxsdvx.pancakeapps.com/pics/pic001.png'></img>
+  <img style='width: 200px' src='http://consandstuff.github.io/rhythmcons/beatmania-iidx/iidx-normal/pics/pic001.png'></img>
 </div>
 
 <hr>
 
-Check http://iidxsdvx.pancakeapps.com for full instructions.
+Check http://consandstuff.github.io/rhythmcons/beatmania-iidx/iidx-hybrid/ for full instructions.
 
 CODE INSTRUCTIONS:
 
@@ -43,7 +43,7 @@ Due to the number of pins it's imposible to have 3 encoders, 9 buttons and also 
 ## Part List / Hardware
 
 Things usde to make this controller.
-You can find links here: http://iidxsdvx.pancakeapps.com
+You can find links here: http://consandstuff.github.io/rhythmcons/beatmania-iidx/iidx-hybrid/
 
 * Arduino Leonardo
 * 1 High quality encoder (600ppr)
